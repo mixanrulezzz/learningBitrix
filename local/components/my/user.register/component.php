@@ -4,11 +4,22 @@
     <?
 
     if(isset($_POST["login"]) && isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["rpassword"])){
+        $filter = Array(
+            "EMAIL" => $_POST["email"],
+        );
+        $rsUsers = CUser::GetList(($by="personal_country"), ($order="desc"), $filter);
+        
+        if($rsUsers->Fetch() !== false) {
+            echo "Пользователь с таким email уже существует";
+            $this->IncludeComponentTemplate();
+            die;
+        }
+        
         $fields = Array(
             "LOGIN" => $_POST["login"],
             "EMAIL" => $_POST["email"],
             "PASSWORD" => $_POST["password"],
-            "CONFIRM_PASSWORD" => $_POST["rpassword"],            
+            "CONFIRM_PASSWORD" => $_POST["rpassword"],   
         );
         $new_user=$USER->Add($fields);
         
@@ -17,7 +28,7 @@
         }
         else {
             echo $USER->LAST_ERROR;
-            $this->IncludeComponentTemplate(); 
+            $this->IncludeComponentTemplate();
         }       
     }
 
