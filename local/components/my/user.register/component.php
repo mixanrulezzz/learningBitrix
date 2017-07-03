@@ -11,7 +11,6 @@
         
         if($rsUsers->Fetch() !== false) {
             echo "Пользователь с таким email уже существует";
-            $this->IncludeComponentTemplate();
             die;
         }
         
@@ -19,27 +18,26 @@
             "LOGIN" => $_POST["login"],
             "EMAIL" => $_POST["email"],
             "PASSWORD" => $_POST["password"],
-            "CONFIRM_PASSWORD" => $_POST["rpassword"],   
+            "CONFIRM_PASSWORD" => $_POST["rpassword"],
         );
         $new_user=$USER->Add($fields);
         
         if(intval($new_user) > 0) {
             echo "Вы успешно зарегистрированы";
+            die;
         }
         else {
             echo $USER->LAST_ERROR;
-            $this->IncludeComponentTemplate();
-        }       
+        }
     }
 
-    ?>   
-
-<?else:?>
-
-    <?if(!$USER->IsAuthorized()):?>
-        <?$this->IncludeComponentTemplate();?>
-    <?else:?>
-        <h3>Вы уже авторизованы</h3>
-    <?endif;?>
+    ?>
 
 <?endif;?>
+
+<?if(!$USER->IsAuthorized()):?>
+    <?$this->IncludeComponentTemplate();?>
+<?else:?>
+    <h3>Вы уже авторизованы</h3>
+<?endif;?>
+
