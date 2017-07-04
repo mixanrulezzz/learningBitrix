@@ -21,6 +21,37 @@
 
     CModule::IncludeModule("iblock");
 
+    /*Delete CIBlockType*/
+
+    $DB->StartTransaction();
+    if(!CIBlockType::Delete('employer'))
+    {
+        $DB->Rollback();
+        echo 'Delete error!';
+    }
+    $DB->Commit();
+
+    $DB->StartTransaction();
+    if(!CIBlockType::Delete('vacancy'))
+    {
+        $DB->Rollback();
+        echo 'Delete error!';
+    }
+    $DB->Commit();
+
+    /* VacancyAdminGroup*/
+
+    $group = new CGroup;
+    $arFields = Array(
+        "ACTIVE"       => "Y",
+        "C_SORT"       => 100,
+        "NAME"         => "Администраторы вакансий",
+        "DESCRIPTION"  => "Администраторы вакансий",
+        "STRING_ID"    => "vacancy_admin"
+    );
+    $vacancy_admin_group_id = $group->Add($arFields);
+    if (strlen($group->LAST_ERROR)>0) ShowError($group->LAST_ERROR);
+
     /* EmployerType */
 
     $arFields = Array(
@@ -97,7 +128,7 @@
         "SITE_ID" => "s1",
         "SORT" => 500,
         "DESCRIPTION_TYPE" => "text",
-        "GROUP_ID" => Array("2"=>"D", "3"=>"R")
+        "GROUP_ID" => Array("1"=>"D", "2"=>"R", $vacancy_admin_group_id=>"W")
     );
 
     if ($ID > 0)
@@ -169,7 +200,7 @@
         "SITE_ID" => "s1",
         "SORT" => 500,
         "DESCRIPTION_TYPE" => "text",
-        "GROUP_ID" => Array("2"=>"D", "3"=>"R")
+        "GROUP_ID" => Array("1"=>"D", "2"=>"R", $vacancy_admin_group_id=>"W")
     );
     if ($ID > 0)
         $res = $ib->Update($ID, $arFields);
