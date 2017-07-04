@@ -5,7 +5,7 @@
     @set_time_limit(0);
     @ignore_user_abort(true);
 
-    $_SERVER["DOCUMENT_ROOT"] = realpath(__DIR__ . '/../../../../');
+    $_SERVER["DOCUMENT_ROOT"] = realpath(__DIR__ . '/../../');
     $DOCUMENT_ROOT = $_SERVER["DOCUMENT_ROOT"];
 
     // Если инициализировать данную константу каким либо значением, то это запретит сбор статистики на данной странице.
@@ -18,6 +18,8 @@
 
     /** @noinspection PhpIncludeInspection */
     require($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.php");
+
+    CModule::IncludeModule("iblock");
 
     /* EmployerType */
 
@@ -89,19 +91,23 @@
     $ib = new CIBlock;
     $arFields = Array(
         "ACTIVE" => "Y",
-        "NAME" => "Employer",
-        "CODE" => "employer",
+        "NAME" => "Employers",
+        "CODE" => "employers",
         "IBLOCK_TYPE_ID" => "employer",
-        "SITE_ID" => Array("en", "ru"),
+        "SITE_ID" => "s1",
         "SORT" => 500,
         "DESCRIPTION_TYPE" => "text",
         "GROUP_ID" => Array("2"=>"D", "3"=>"R")
     );
+
     if ($ID > 0)
         $res = $ib->Update($ID, $arFields);
     else
     {
         $ID = $ib->Add($arFields);
+        if($ID === false){
+            echo 'Error: '.$ib->LAST_ERROR.'<br>';
+        }
         $res = ($ID>0);
     }
 
@@ -157,10 +163,10 @@
     $ib = new CIBlock;
     $arFields = Array(
         "ACTIVE" => "Y",
-        "NAME" => "Vacancy",
-        "CODE" => "vacancy",
+        "NAME" => "Vacancies",
+        "CODE" => "vacancies",
         "IBLOCK_TYPE_ID" => "vacancy",
-        "SITE_ID" => Array("en", "ru"),
+        "SITE_ID" => "s1",
         "SORT" => 500,
         "DESCRIPTION_TYPE" => "text",
         "GROUP_ID" => Array("2"=>"D", "3"=>"R")
@@ -170,6 +176,9 @@
     else
     {
         $ID = $ib->Add($arFields);
+        if($ID === false){
+            echo 'Error: '.$ib->LAST_ERROR.'<br>';
+        }
         $res = ($ID>0);
     }
 
