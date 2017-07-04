@@ -42,16 +42,25 @@
     /* VacancyAdminGroup*/
 
     $group = new CGroup;
-    $arFields = Array(
-        "ACTIVE"       => "Y",
-        "C_SORT"       => 100,
-        "NAME"         => "Администраторы вакансий",
-        "DESCRIPTION"  => "Администраторы вакансий",
-        "STRING_ID"    => "vacancy_admin"
+    $filter = Array(
+        "STRING_ID" => "vacancy_admin"
     );
-    $vacancy_admin_group_id = $group->Add($arFields);
-    if (strlen($group->LAST_ERROR)>0) ShowError($group->LAST_ERROR);
-
+    $rsGroups = CGroup::GetList( ($by="c_sort"), ($order="desc"), $filter);
+    $result = $rsGroups->Fetch();
+    if ($result !== false){
+        $vacancy_admin_group_id = $result["ID"];
+    }
+    else {
+        $arFields = Array(
+            "ACTIVE" => "Y",
+            "C_SORT" => 100,
+            "NAME" => "Администраторы вакансий",
+            "DESCRIPTION" => "Администраторы вакансий",
+            "STRING_ID" => "vacancy_admin"
+        );
+        $vacancy_admin_group_id = $group->Add($arFields);
+        if (strlen($group->LAST_ERROR) > 0) ShowError($group->LAST_ERROR);
+    }
     /* EmployerType */
 
     $arFields = Array(
