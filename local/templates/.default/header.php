@@ -23,20 +23,23 @@ IncludeTemplateLangFile(__FILE__);
 
 <body>
     <?$APPLICATION->ShowPanel()?>
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="collapsed navbar-toggle" data-toggle="collapse"
-                        data-target="#bs-example-navbar-collapse-9" aria-expanded="false"><span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
-                </button>
-                <a href="/" class="navbar-brand">Bitrix</a></div>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
-                <ul class="nav navbar-nav">
-                    <li><a href="/auth">Авторизация</a></li>
-                    <li><a href="/auth/registration.php">Регистрация</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <div class="wrapper">
+        <header>
+            <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="collapsed navbar-toggle" data-toggle="collapse"
+                                data-target="#bs-example-navbar-collapse-9" aria-expanded="false"><span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+                        </button>
+                        <a href="/" class="navbar-brand">Bitrix</a></div>
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
+                        <ul class="nav navbar-nav">
+                            <li><a href="/auth">Авторизация</a></li>
+                            <li><a href="/auth/registration.php">Регистрация</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
 
