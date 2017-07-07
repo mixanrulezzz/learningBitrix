@@ -37,6 +37,7 @@ IncludeTemplateLangFile(__FILE__);
                         <ul class="nav navbar-nav">
                             <li><a href="/auth">Авторизация</a></li>
                             <li><a href="/auth/registration.php">Регистрация</a></li>
+                            <li><a href="/vacancy/">Вакансии</a></li>
                         </ul>
                     </div>
                 </div>
