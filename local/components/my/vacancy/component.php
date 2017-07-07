@@ -163,9 +163,6 @@ $arUrlTemplates = CComponentEngine::MakeComponentUrlTemplates($arDefaultUrlTempl
 $arVariableAliases = CComponentEngine::MakeComponentVariableAliases($arDefaultVariableAliases404, $arParams["VARIABLE_ALIASES"]);
 
 $componentPage = CComponentEngine::ParseComponentPath($arParams["SEF_FOLDER"], $arUrlTemplates, $arVariables);
-var_dump($componentPage);
-die();
-
 
 if (empty($componentPage) || (!array_key_exists($componentPage, $arDefaultUrlTemplates404)))
     $componentPage = "404";

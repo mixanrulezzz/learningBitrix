@@ -1,8 +1,11 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: USER
- * Date: 06.07.2017
- * Time: 14:54
- */
-echo "list";
+<? if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
+
+$APPLICATION->IncludeComponent(
+    "my:vacancy.list",
+    ".default",
+    Array(
+        "IBLOCK_ID" => $arParams["IBLOCK_ID"],
+    )
+);
+
+?>
