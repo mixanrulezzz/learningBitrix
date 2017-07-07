@@ -10,6 +10,7 @@ $APPLICATION->IncludeComponent(
     ".default",
     Array(
         "SEF_FOLDER" => "/vacancy/",
+        "IBLOCK_ID" => "21",
     )
 );?>
 
