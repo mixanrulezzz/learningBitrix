@@ -33,6 +33,22 @@ class CVacancyList extends CBitrixComponent {
             $item = $element->GetFields();
             $item["PROPERTIES"] = $element->GetProperties();
 
+            $sort = array(
+                "id" => "asc",
+            );
+
+            $filter = array(
+                "IBLOCK_ID" => $item["PROPERTIES"]["employer"]["LINK_IBLOCK_ID"],
+                "ID" => $item["PROPERTIES"]["employer"]["VALUE"],
+            );
+
+            $employer = CIBlockElement::GetList($sort, $filter);
+            $employerElement = $employer->GetNextElement();
+
+            if($employerElement !== false) {
+                $item["PROPERTIES"]["employer"]["OBJECT"] = $employerElement->GetFields();
+            }
+
             $arResult["ITEMS"][] = $item;
             $arResult["ELEMENTS"][] = $item["ID"];
 

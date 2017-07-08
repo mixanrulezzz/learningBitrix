@@ -14,7 +14,8 @@ echo "</pre>";*/
         <div class="row">
             <h3><a href="<?=$item["DETAIL_PAGE_URL"]?>"><?=$item["NAME"]?></a></h3>
             <p>Зарплата: от <?=$item["PROPERTIES"]["payment"]["VALUE"]?> - до <?=$item["PROPERTIES"]["payment_up_to"]["VALUE"]?></p>
-            <p>Специализация: <?=$item["PROPERTIES"]["spec"]["VALUE"]?></p>
+            <p><?=$item["PROPERTIES"]["spec"]["NAME"]?>: <?=$item["PROPERTIES"]["spec"]["VALUE"]?></p>
+            <p><?=$item["PROPERTIES"]["employer"]["NAME"]?>: <?=$item["PROPERTIES"]["employer"]["OBJECT"]["NAME"]?></p>
         </div>
 
     <? endforeach; ?>
