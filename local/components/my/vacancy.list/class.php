@@ -4,7 +4,6 @@ class CVacancyList extends CBitrixComponent {
 
     public function executeComponent()
     {
-        global $arParams;
         global $arResult;
         CModule::IncludeModule("iblock");
 
