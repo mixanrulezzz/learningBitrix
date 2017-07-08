@@ -40,6 +40,13 @@ class CVacancyList extends CBitrixComponent {
             $element = $listOfElements->GetNextElement();
         }
 
+        $arResult["NAV_STRING"] = $listOfElements->GetPageNavStringEx(
+            $navComponentObject,
+            "",
+            "",
+            "Y"
+        );
+
         $this->includeComponentTemplate();
     }
 

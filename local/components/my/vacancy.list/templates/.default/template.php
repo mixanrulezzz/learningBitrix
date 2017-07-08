@@ -6,5 +6,8 @@ global $arResult;
     <div class="row">
         <h1>List</h1>
     </div>
+    <div class="row">
+        <?=$arResult["NAV_STRING"];?>
+    </div>
 </div>
 
