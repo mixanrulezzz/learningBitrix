@@ -1,8 +1,5 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 global $arResult;
-/*echo "<pre>";
-var_dump($arResult["ITEMS"]);
-echo "</pre>";*/
 
 ?>
 
