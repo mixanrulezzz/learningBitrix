@@ -23,7 +23,7 @@ class CVacancyList extends CBitrixComponent {
         $arSelect = array("ID", "IBLOCK_ID", "NAME", "PROPERTY_PAYMENT", "PROPERTY_PAYMENT_UP_TO", "PROPERTY_SPEC", "PROPERTY_EMPLOYER");
 
         $listOfElements = CIBlockElement::GetList($arSort, $arFilter, false, $arNavParams, $arSelect);
-        $listOfElements->SetUrlTemplates($this->arParams["DETAIL_URL"], "", $this->arParams["LIST_URL"]);
+        $listOfElements->SetUrlTemplates($this->arParams["DETAIL_PAGE_URL"], "", $this->arParams["LIST_PAGE_URL"]);
 
         $element = $listOfElements->GetNextElement();
         while($element){

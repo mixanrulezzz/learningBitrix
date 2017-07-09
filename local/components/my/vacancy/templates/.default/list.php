@@ -6,8 +6,8 @@ $APPLICATION->IncludeComponent(
     Array(
         "IBLOCK_ID" => $arParams["IBLOCK_ID"],
         "PAGE_SIZE" => 10,
-        "DETAIL_URL" => $arParams["DETAIL_URL"],
-        "LIST_URL" => $arParams["LIST_URL"],
+        "DETAIL_PAGE_URL" => $arParams["DETAIL_PAGE_URL"],
+        "LIST_PAGE_URL" => $arParams["LIST_PAGE_URL"],
     )
 );
 

@@ -11,8 +11,8 @@ $APPLICATION->IncludeComponent(
     Array(
         "SEF_FOLDER" => "/vacancy/",
         "IBLOCK_ID" => "21",
-        "DETAIL_URL" => "/vacancy/#ELEMENT_ID#/",
-        "LIST_URL" => "/vacancy/",
+        "DETAIL_PAGE_URL" => "/vacancy/#ELEMENT_ID#/",
+        "LIST_PAGE_URL" => "/vacancy/",
     )
 );?>
 
