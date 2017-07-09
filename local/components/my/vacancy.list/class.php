@@ -7,8 +7,6 @@ class CVacancyList extends CBitrixComponent {
         global $arResult;
         CModule::IncludeModule("iblock");
 
-        $elementOnPage = 10;
-
         $arSort = array(
             "active_from" => "desc",
             "name" => "asc",
@@ -19,13 +17,13 @@ class CVacancyList extends CBitrixComponent {
         );
 
         $arNavParams = array(
-            "nPageSize" => $elementOnPage,
+            "nPageSize" => $this->arParams["PAGE_SIZE"],
         );
 
         $arSelect = array("ID", "IBLOCK_ID", "NAME", "PROPERTY_PAYMENT", "PROPERTY_PAYMENT_UP_TO", "PROPERTY_SPEC", "PROPERTY_EMPLOYER");
 
         $listOfElements = CIBlockElement::GetList($arSort, $arFilter, false, $arNavParams, $arSelect);
-        $listOfElements->SetUrlTemplates("/vacancy/#ELEMENT_ID#/", "", "/vacancy/");
+        $listOfElements->SetUrlTemplates($this->arParams["DETAIL_URL"], "", $this->arParams["LIST_URL"]);
 
         $element = $listOfElements->GetNextElement();
         while($element){
