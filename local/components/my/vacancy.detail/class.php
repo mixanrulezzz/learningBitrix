@@ -23,7 +23,7 @@ class CVacancyDetail extends CBitrixComponent {
                 "CODE" => $this->arParams["ELEMENT_ID"],
             );
         }
-        
+
         $rsVacancy = CIBlockElement::GetList($arSort, $arFilter);
         $rsVacancy->SetUrlTemplates($this->arParams["DETAIL_PAGE_URL"], "", $this->arParams["LIST_PAGE_URL"]);
 
@@ -54,7 +54,7 @@ class CVacancyDetail extends CBitrixComponent {
                 }
             }
 
-            $arResult["ITEM"][] = $item;
+            $arResult["ITEM"] = $item;
         }
         else {
             header("Location: /404.php");
