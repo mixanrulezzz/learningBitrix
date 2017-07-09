@@ -13,6 +13,7 @@ class CVacancyList extends CBitrixComponent {
         );
 
         $arFilter = array(
+            "ACTIVE" => "Y",
             "IBLOCK_ID" => $this->arParams["IBLOCK_ID"],
         );
 

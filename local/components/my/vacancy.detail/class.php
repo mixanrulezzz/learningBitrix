@@ -14,11 +14,13 @@ class CVacancyDetail extends CBitrixComponent {
 
         if(is_numeric($this->arParams["ELEMENT_ID"])) {
             $arFilter = array(
+                "ACTIVE" => "Y",
                 "IBLOCK_ID" => $this->arParams["IBLOCK_ID"],
                 "ID" => $this->arParams["ELEMENT_ID"],
             );
         } else {
             $arFilter = array(
+                "ACTIVE" => "Y",
                 "IBLOCK_ID" => $this->arParams["IBLOCK_ID"],
                 "CODE" => $this->arParams["ELEMENT_ID"],
             );
