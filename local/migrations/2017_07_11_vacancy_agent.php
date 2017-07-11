@@ -19,3 +19,12 @@
     /** @noinspection PhpIncludeInspection */
     require($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.php");
 
+    CAgent::AddAgent(
+        "VacancyAgent::DeactivateVacancy();", // имя функции
+        "",                          // идентификатор модуля
+        "N",                                  // агент не критичен к кол-ву запусков
+        86400,                                // интервал запуска - 1 сутки
+        "",                // дата первой проверки на запуск
+        "Y",                                  // агент активен
+        "",                // дата первого запуска
+        30);
